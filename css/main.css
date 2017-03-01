@@ -1,0 +1,32 @@
+.select2 {
+    width: 200px;
+}
+
+.select2 input {
+    width: inherit;
+}
+
+.search:after {
+    content: "¶ ";
+}
+
+.select2 ul {
+    margin: 0;
+    padding: 0;
+}
+
+.select2 li input[type=checkbox] {
+    float: right;
+    margin-left: 2px;
+}
+
+.select2 li {
+    border: none;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    width: inherit;
+    list-style-type: none;
+}
+
+.select2 li:hover {
+    background: rgb(238, 238, 238);
+}
