@@ -1,7 +1,7 @@
 Vue.component('select2', {
     template:
-    '<div >' +
-        '<ul> ' +
+    '<div v-on:keyup.up="up" v-on:keyup.down="down" >' +
+        '<ul > ' +
             // '<input type="text" name="newItem" v-model="newItem" v-on:keyup.enter="addNewItem" v-show="true">' +
             '<li v-for="dataItem in data">' +
                 '<label v-bind:for="dataItem.id">{{dataItem.value}}</label>' +
@@ -17,6 +17,7 @@ Vue.component('select2', {
             checkedItems: [],
             showAddItemField: true,
             newItem: null,
+            selectedItem: 0,
         };
     },
     watch: {
@@ -27,6 +28,12 @@ Vue.component('select2', {
     methods: {
         addNewItem: function () {
             this.$parent.$options.methods.addNewItem(this.newItem);
+        },
+        up: function () {
+            console.log('up');
+        },
+        down: function () {
+            console.log('down');
         }
     }
 });
@@ -52,6 +59,7 @@ var app = new Vue({
         filteredData: [],
         checkedItems: [],
         showList: false,
+        addNewItem: false,
     },
 
     created: function () {
@@ -92,10 +100,12 @@ var app = new Vue({
             })
         },
         showItemsList: function () {
-            this.showList = !this.showList;
+            this.showList = true;
         },
         addNewItem: function () {
-            app.sourceData.push({value: this.findString});
+            if (this.addNewItem == this) {
+                app.sourceData.push({value: this.findString});
+            }
         }
     }
 });
